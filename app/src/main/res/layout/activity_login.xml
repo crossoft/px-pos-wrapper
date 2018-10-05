@@ -21,17 +21,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_90sdp"
-
-                >
+                android:layout_marginTop="@dimen/_90sdp">
 
                 <RelativeLayout
                     android:id="@+id/emailRV"
-                    android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
 
                     >
 
@@ -52,14 +49,14 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_toRightOf="@+id/emailRV"
                     android:background="@android:color/transparent"
+                    android:cursorVisible="true"
                     android:hint="username"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
                     android:text=""
-                    android:cursorVisible="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
-                    android:textSize="@dimen/_13sdp"/>
+                    android:textSize="@dimen/_13sdp" />
 
 
             </RelativeLayout>
@@ -81,9 +78,9 @@
 
                 <RelativeLayout
                     android:id="@+id/lockRV"
-                    android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
 
                     >
 
@@ -104,12 +101,12 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_toRightOf="@+id/lockRV"
                     android:background="@android:color/transparent"
+                    android:cursorVisible="true"
                     android:hint="password"
                     android:inputType="textPassword"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
                     android:text=""
-                    android:cursorVisible="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="@dimen/_13sdp" />
@@ -130,10 +127,10 @@
                 android:id="@+id/logingTV"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_38sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/bg_btn"
                 android:gravity="center"
                 android:text="Log In"
@@ -152,7 +149,6 @@
 
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/createTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,7 +156,8 @@
             android:layout_marginBottom="@dimen/_20sdp"
             android:gravity="center"
             android:text="Don't have an account? Create one"
-            android:textColor="@color/black_opacity_text" />
+            android:textColor="@color/black_opacity_text"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

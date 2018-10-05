@@ -64,7 +64,7 @@
                     android:padding="10dp"
                     android:singleLine="true"
                     android:text="OK"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
             </RelativeLayout>
 

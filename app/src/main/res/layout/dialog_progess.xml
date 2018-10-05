@@ -9,17 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
         android:background="@drawable/progress_background"
         android:padding="@dimen/_20sdp">
 
         <ProgressBar
             android:id="@+id/circlePB"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            />
+            android:layout_height="wrap_content" />
     </LinearLayout>
-    <!--style="@style/MyProgressBarRectangle"-->
-    <!--android:background="@drawable/progress_background"-->
+
 </LinearLayout>
