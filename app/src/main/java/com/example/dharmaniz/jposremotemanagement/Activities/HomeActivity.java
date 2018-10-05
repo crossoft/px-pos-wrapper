@@ -1,5 +1,6 @@
 package com.example.dharmaniz.jposremotemanagement.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +11,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+
+import com.example.dharmaniz.jposremotemanagement.ObservableWebView;
 import com.example.dharmaniz.jposremotemanagement.R;
 import com.example.dharmaniz.jposremotemanagement.RemoteManagementBaseActivity;
 import com.example.dharmaniz.jposremotemanagement.RemotePreference.RemoteSharedPreference;
@@ -25,9 +31,13 @@ import com.example.dharmaniz.jposremotemanagement.Util.AlertDialogManager;
 
 public class HomeActivity extends RemoteManagementBaseActivity {
 Activity mActivity =HomeActivity.this;
-private WebView webURLWV;
+private ObservableWebView webURLWV;
 private ProgressBar progressBarPB;
-private RelativeLayout logoutRL;
+private RelativeLayout logoutRL,toolBarRL;
+Toolbar my_toolbar;
+ScrollView scrollViewSV;
+boolean toolBar=false;
+float mTouchPosition ,mReleasePosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +48,76 @@ private RelativeLayout logoutRL;
 
     }
 
+    @SuppressLint("NewApi")
     @Override
     protected void setUpViews() {
         webURLWV=findViewById(R.id.webURLWV);
         logoutRL=findViewById(R.id.logoutRL);
+        toolBarRL=findViewById(R.id.toolBarRL);
+//        my_toolbar=findViewById(R.id.my_toolbar);
         progressBarPB=findViewById(R.id.progressBarPB);
+//        scrollViewSV=findViewById(R.id.scrollViewSV);
         progressBarPB.setVisibility(View.VISIBLE);
         String GoogleDocs = "http://dharmani.com/";
+
+//        scrollViewSV.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//                    mTouchPosition = motionEvent.getY();
+//                    my_toolbar.setVisibility(View.GONE);
+//                }
+//                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+//                    mReleasePosition = motionEvent.getY();
+//                    my_toolbar.setVisibility(View.VISIBLE);
+//
+//                }
+//                if (mTouchPosition - mReleasePosition > 0) {
+//                    my_toolbar.setVisibility(View.GONE);
+//                    // user scroll down
+//                } else {
+//                    my_toolbar.setVisibility(View.VISIBLE);
+//                    //user scroll up
+//                }
+//                return HomeActivity.super.onTouchEvent(motionEvent);
+//            }
+//        });
+
+//        scrollViewSV.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+//                if (i >= i1) {
+//                    System.out.println("Swipe UP");
+//                    my_toolbar.showOverflowMenu();
+//                    my_toolbar.setVisibility(View.VISIBLE);
+//
+//
+//                } else {
+//                    System.out.println("Swipe Down");
+//                    my_toolbar.setVisibility(View.GONE);
+//                    my_toolbar.hideOverflowMenu();
+//
+//                }
+//            }
+//        });
+//        webURLWV.setOnScrollChangedCallback(new ObservableWebView.OnScrollChangedCallback(){
+//            public void onScroll(int l, int t, int oldl, int oldt){
+//
+//                if (t > my_toolbar.getHeight() && my_toolbar.isShown()) {
+//                    System.out.println("Swipe UP");
+//
+//                    my_toolbar.setVisibility(View.GONE);
+//                    my_toolbar.hideOverflowMenu();
+//
+//                } else if (t == 0 && !my_toolbar.isShown()) {
+//                    System.out.println("Swipe Down");
+//                    my_toolbar.showOverflowMenu();
+//                    my_toolbar.setVisibility(View.VISIBLE);
+//
+//                }
+//                Log.d("","We Scrolled etc...");
+//            }
+//        });
         webURLWV.getSettings().setJavaScriptEnabled(true);
         webURLWV.getSettings().setLoadWithOverviewMode(true);
         webURLWV.getSettings().setUseWideViewPort(true);
@@ -87,6 +160,8 @@ private RelativeLayout logoutRL;
                   view.loadUrl(url);
               }
 
+
+
                 return true;
             }
             @Override
@@ -95,6 +170,7 @@ private RelativeLayout logoutRL;
             }
         });
         webURLWV.loadUrl(GoogleDocs);
+
     }
 
     @Override
